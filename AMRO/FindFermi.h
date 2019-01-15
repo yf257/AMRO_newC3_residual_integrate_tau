@@ -21,16 +21,22 @@ private:
 	Ipp64f *ky ;
 	//Ipp64f *startpoint ;
 	Ipp64f tol;
+	int fineN;
+	int gridN;
+	int cdevs;
+	int nfinepoint;
+	Ipp64f *finthe;
 	Ipp64f params[9];
+
 public:
 	
 	int nPoints;
-	FindFermi(std::string name, Ipp64f * param);
+	FindFermi( Ipp64f * param);
 	int UpdatePar(Ipp64f *param);
 	int PrintPar();
 	int ReturnStart(Ipp64f *startpoint);
 	int ReturnNumPoint();
-	
+	int interfunc(Ipp64f *theta, Ipp64f *kx, Ipp64f *ky, int Laylength, int clength, int flength, Ipp64f *temp, Ipp64f *temp2, Ipp64f *out);
 	virtual ~FindFermi();
 };
 
