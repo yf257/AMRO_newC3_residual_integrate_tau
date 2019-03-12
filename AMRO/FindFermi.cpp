@@ -45,7 +45,8 @@ int FindFermi::func(Ipp64f *params, Ipp64f * argkz, Ipp64f * argCos, Ipp64f * ar
 	ippsMul_64f_I(&temp[4 * length], temp, length); // mult by cos sin/2
 	ippsMul_64f_I(&temp[7 * length], temp, length); // mult by cos  kz/2
 	ippsMulC_64f_I(-35164.83516 * params[6 - 1], temp, length);
-	ippsMulC_64f_I(-35164.83516 *params[7 - 1], &temp[9 * length], length);
+//	ippsMulC_64f_I(-35164.83516 *params[7 - 1], &temp[9 * length], length);
+	ippsMulC_64f_I(-35164.83516 *0, &temp[9 * length], length);
 	ippsAdd_64f_I(temp, out, length);
 	ippsAdd_64f_I(&temp[9 * length], out, length);
 
@@ -94,7 +95,7 @@ FindFermi::FindFermi( Ipp64f * param)
 	UpdatePar(param);
 	fineN = 3000;//innitial grid inplane
 	gridN = 56;//actual grid inplane
-	cdevs = 16;//Kz grid
+	cdevs = 8;//Kz grid
 	//Ipp64f * starts = extractor.getDataArray();
 	//int nPoints = floor((extractor.getNumberOfLines()) / 2);
 	nPoints = gridN * cdevs;
@@ -165,8 +166,8 @@ int FindFermi::ReturnStart(Ipp64f * startpoint)
 	for (int i = 0; i < 50; i++)
 	{  /*vdSin(nPoints, theta, argSin);
 		vdCos(nPoints, theta, argCos);
-		ippsMulC_64f_I(3.74767, argSin, nPoints);
-		ippsMulC_64f_I(3.74767, argCos, nPoints);
+		ippsMulC_64f_I(3.747665940, argSin, nPoints);
+		ippsMulC_64f_I(3.747665940, argCos, nPoints);
 		ippsMulC_64f(kz, 3.3, argkz, nPoints);
 		func(argkz, argCos, argSin, r, nPoints, temp1, temp2, temp3, funcval);
 
